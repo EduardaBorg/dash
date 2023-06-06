@@ -1,0 +1,2842 @@
+grafanaDashboard:
+  crd:
+    apiVersion: integreatly.org/v1alpha1
+    enabled: true
+    dashboards:
+      - id: logistics-driver-profile-biography-dashboard
+        json: |-
+          {
+            "annotations": {
+              "list": [
+                {
+                  "builtIn": 1,
+                  "datasource": {
+                    "type": "datasource",
+                    "uid": "grafana"
+                  },
+                  "enable": true,
+                  "hide": true,
+                  "iconColor": "rgba(0, 211, 255, 1)",
+                  "name": "Annotatioåns & Alerts",
+                  "target": {
+                    "limit": 100,
+                    "matchAny": false,
+                    "tags": [],
+                    "type": "dashboard"
+                  },
+                  "type": "dashboard"
+                }
+              ]
+            },
+            "editable": true,
+            "fiscalYearStartMonth": 0,
+            "graphTooltip": 0,
+            "id": 263,
+            "links": [],
+            "liveNow": false,
+            "panels": [
+              {
+                "collapsed": false,
+                "gridPos": {
+                  "h": 1,
+                  "w": 24,
+                  "x": 0,
+                  "y": 0
+                },
+                "id": 84,
+                "panels": [],
+                "title": "DynamoDB",
+                "type": "row"
+              },
+              {
+                "alert": {
+                  "alertRuleTags": {},
+                  "conditions": [
+                    {
+                      "evaluator": {
+                        "params": [
+                          12
+                        ],
+                        "type": "gt"
+                      },
+                      "operator": {
+                        "type": "and"
+                      },
+                      "query": {
+                        "params": [
+                          "A",
+                          "1m",
+                          "now"
+                        ]
+                      },
+                      "reducer": {
+                        "params": [],
+                        "type": "avg"
+                      },
+                      "type": "query"
+                    }
+                  ],
+                  "executionErrorState": "keep_state",
+                  "for": "5m",
+                  "frequency": "1m",
+                  "handler": 1,
+                  "message": "O consumo do dynamo provisionado está sendo alcançado.",
+                  "name": "Biograpgy Dynamo Consumption Alert",
+                  "noDataState": "no_data",
+                  "notifications": []
+                },
+                "datasource": {
+                  "type": "cloudwatch",
+                  "uid": "P034F075C744B399F"
+                },
+                "description": "",
+                "fieldConfig": {
+                  "defaults": {
+                    "color": {
+                      "mode": "palette-classic"
+                    },
+                    "custom": {
+                      "axisLabel": "",
+                      "axisPlacement": "auto",
+                      "barAlignment": 0,
+                      "drawStyle": "line",
+                      "fillOpacity": 0,
+                      "gradientMode": "none",
+                      "hideFrom": {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": false
+                      },
+                      "lineInterpolation": "linear",
+                      "lineWidth": 1,
+                      "pointSize": 5,
+                      "scaleDistribution": {
+                        "type": "linear"
+                      },
+                      "showPoints": "auto",
+                      "spanNulls": false,
+                      "stacking": {
+                        "group": "A",
+                        "mode": "none"
+                      },
+                      "thresholdsStyle": {
+                        "mode": "off"
+                      }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green",
+                          "value": null
+                        },
+                        {
+                          "color": "red",
+                          "value": 80
+                        }
+                      ]
+                    }
+                  },
+                  "overrides": []
+                },
+                "gridPos": {
+                  "h": 8,
+                  "w": 24,
+                  "x": 0,
+                  "y": 1
+                },
+                "id": 82,
+                "options": {
+                  "legend": {
+                    "calcs": [
+                      "mean",
+                      "max"
+                    ],
+                    "displayMode": "table",
+                    "placement": "right"
+                  },
+                  "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                  }
+                },
+                "targets": [
+                  {
+                    "alias": "consumed_read",
+                    "datasource": {
+                      "type": "cloudwatch",
+                      "uid": "P034F075C744B399F"
+                    },
+                    "dimensions": {
+                      "TableName": "logistics-driver-profile-biography"
+                    },
+                    "expression": "",
+                    "id": "",
+                    "matchExact": true,
+                    "metricEditorMode": 0,
+                    "metricName": "ConsumedReadCapacityUnits",
+                    "metricQueryType": 0,
+                    "namespace": "AWS/DynamoDB",
+                    "period": "",
+                    "queryMode": "Metrics",
+                    "refId": "A",
+                    "region": "default",
+                    "sqlExpression": "",
+                    "statistic": "Average"
+                  },
+                  {
+                    "alias": "consumed_write",
+                    "datasource": {
+                      "type": "cloudwatch",
+                      "uid": "P034F075C744B399F"
+                    },
+                    "dimensions": {
+                      "TableName": "logistics-driver-profile-biography"
+                    },
+                    "expression": "",
+                    "hide": false,
+                    "id": "",
+                    "matchExact": true,
+                    "metricEditorMode": 0,
+                    "metricName": "ConsumedWriteCapacityUnits",
+                    "metricQueryType": 0,
+                    "namespace": "AWS/DynamoDB",
+                    "period": "",
+                    "queryMode": "Metrics",
+                    "refId": "B",
+                    "region": "default",
+                    "sqlExpression": "",
+                    "statistic": "Average"
+                  },
+                  {
+                    "alias": "provisioned_read",
+                    "datasource": {
+                      "type": "cloudwatch",
+                      "uid": "P034F075C744B399F"
+                    },
+                    "dimensions": {
+                      "TableName": "logistics-driver-profile-biography"
+                    },
+                    "expression": "",
+                    "hide": false,
+                    "id": "",
+                    "matchExact": true,
+                    "metricEditorMode": 0,
+                    "metricName": "ProvisionedReadCapacityUnits",
+                    "metricQueryType": 0,
+                    "namespace": "AWS/DynamoDB",
+                    "period": "",
+                    "queryMode": "Metrics",
+                    "refId": "C",
+                    "region": "default",
+                    "sqlExpression": "",
+                    "statistic": "Average"
+                  },
+                  {
+                    "alias": "provisioned_write",
+                    "datasource": {
+                      "type": "cloudwatch",
+                      "uid": "P034F075C744B399F"
+                    },
+                    "dimensions": {
+                      "TableName": "logistics-driver-profile-biography"
+                    },
+                    "expression": "",
+                    "hide": false,
+                    "id": "",
+                    "matchExact": true,
+                    "metricEditorMode": 0,
+                    "metricName": "ProvisionedWriteCapacityUnits",
+                    "metricQueryType": 0,
+                    "namespace": "AWS/DynamoDB",
+                    "period": "",
+                    "queryMode": "Metrics",
+                    "refId": "D",
+                    "region": "default",
+                    "sqlExpression": "",
+                    "statistic": "Average"
+                  }
+                ],
+                "thresholds": [
+                  {
+                    "colorMode": "critical",
+                    "op": "gt",
+                    "value": 12,
+                    "visible": true
+                  }
+                ],
+                "title": "Dynamo Consumption",
+                "type": "timeseries"
+              },
+              {
+                "collapsed": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "gridPos": {
+                  "h": 1,
+                  "w": 24,
+                  "x": 0,
+                  "y": 9
+                },
+                "id": 70,
+                "panels": [],
+                "title": "Summary",
+                "type": "row"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PAEE58C5BFB49D459"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "color": {
+                      "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green",
+                          "value": null
+                        },
+                        {
+                          "color": "red",
+                          "value": 20000
+                        }
+                      ]
+                    },
+                    "unit": "rpm"
+                  },
+                  "overrides": []
+                },
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 0,
+                  "y": 10
+                },
+                "id": 72,
+                "options": {
+                  "orientation": "auto",
+                  "reduceOptions": {
+                    "calcs": [
+                      "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                  },
+                  "showThresholdLabels": false,
+                  "showThresholdMarkers": true,
+                  "text": {}
+                },
+                "pluginVersion": "8.5.9",
+                "targets": [
+                  {
+                    "datasource": {
+                      "type": "prometheus",
+                      "uid": "PAEE58C5BFB49D459"
+                    },
+                    "exemplar": true,
+                    "expr": "sum(increase(kong_http_status{job=\"kong-logistics-main\", service=\"logistics-driver-profile-biography\"}[1m])) + sum(increase(kong_http_status{job=\"kong-logistics-main\", service=\"logistics-driver-profile-biography\"}[1m]))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "",
+                    "refId": "B"
+                  }
+                ],
+                "title": "Throughput RPM",
+                "type": "gauge"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PAEE58C5BFB49D459"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "color": {
+                      "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green",
+                          "value": null
+                        },
+                        {
+                          "color": "red",
+                          "value": 400
+                        }
+                      ]
+                    },
+                    "unit": "ms"
+                  },
+                  "overrides": []
+                },
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 12,
+                  "y": 10
+                },
+                "id": 74,
+                "options": {
+                  "orientation": "auto",
+                  "reduceOptions": {
+                    "calcs": [
+                      "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                  },
+                  "showThresholdLabels": false,
+                  "showThresholdMarkers": true,
+                  "text": {}
+                },
+                "pluginVersion": "8.5.9",
+                "targets": [
+                  {
+                    "datasource": {
+                      "type": "prometheus",
+                      "uid": "PAEE58C5BFB49D459"
+                    },
+                    "exemplar": true,
+                    "expr": "sum(increase(kong_latency_sum{service=\"logistics-driver-profile-biography\"}[1m])) / sum(increase(kong_latency_count{service=\"logistics-driver-profile-biography\"}[1m]))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "{{route}}",
+                    "refId": "A"
+                  }
+                ],
+                "title": "Response time",
+                "type": "gauge"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PAEE58C5BFB49D459"
+                },
+                "description": "",
+                "fieldConfig": {
+                  "defaults": {
+                    "color": {
+                      "mode": "thresholds"
+                    },
+                    "decimals": 0,
+                    "mappings": [],
+                    "thresholds": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 80
+                        }
+                      ]
+                    },
+                    "unit": "none"
+                  },
+                  "overrides": []
+                },
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 0,
+                  "y": 18
+                },
+                "id": 76,
+                "options": {
+                  "colorMode": "value",
+                  "graphMode": "area",
+                  "justifyMode": "auto",
+                  "orientation": "auto",
+                  "reduceOptions": {
+                    "calcs": [
+                      "last"
+                    ],
+                    "fields": "",
+                    "values": false
+                  },
+                  "text": {},
+                  "textMode": "auto"
+                },
+                "pluginVersion": "8.5.9",
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum(increase(kong_http_status{job=\"kong-logistics-main\", service=\"logistics-driver-profile-biography\", code=~\"4.*|5.*\"}[5m])) by (code)",
+                    "instant": true,
+                    "interval": "",
+                    "legendFormat": "{{code}}",
+                    "refId": "A"
+                  },
+                  {
+                    "exemplar": true,
+                    "expr": "sum(increase(kong_http_status{job=\"kong-logistics-main\", service=\"logistics-driver-profile-biography-s3\", code=~\"4.*|5.*\"}[5m]))by (code)",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "{{code}}",
+                    "refId": "B"
+                  }
+                ],
+                "title": "Errors",
+                "type": "stat"
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "description": "",
+                "fieldConfig": {
+                  "defaults": {
+                    "color": {
+                      "mode": "palette-classic"
+                    },
+                    "custom": {
+                      "axisLabel": "",
+                      "axisPlacement": "auto",
+                      "barAlignment": 0,
+                      "drawStyle": "line",
+                      "fillOpacity": 0,
+                      "gradientMode": "none",
+                      "hideFrom": {
+                        "legend": false,
+                        "tooltip": false,
+                        "viz": false
+                      },
+                      "lineInterpolation": "linear",
+                      "lineWidth": 1,
+                      "pointSize": 5,
+                      "scaleDistribution": {
+                        "type": "linear"
+                      },
+                      "showPoints": "auto",
+                      "spanNulls": false,
+                      "stacking": {
+                        "group": "A",
+                        "mode": "none"
+                      },
+                      "thresholdsStyle": {
+                        "mode": "off"
+                      }
+                    },
+                    "mappings": [],
+                    "thresholds": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 80
+                        }
+                      ]
+                    }
+                  },
+                  "overrides": []
+                },
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 12,
+                  "y": 18
+                },
+                "id": 80,
+                "options": {
+                  "legend": {
+                    "calcs": [],
+                    "displayMode": "list",
+                    "placement": "bottom"
+                  },
+                  "tooltip": {
+                    "mode": "single",
+                    "sort": "none"
+                  }
+                },
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum by (source, class) ( rate (nginx_identified_requests{destination=\"logistics-driver-profile-biography\"}[1m]))",
+                    "interval": "",
+                    "legendFormat": "{{source}}",
+                    "refId": "A"
+                  }
+                ],
+                "title": "Identified Requests",
+                "type": "timeseries"
+              },
+              {
+                "collapsed": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "gridPos": {
+                  "h": 1,
+                  "w": 24,
+                  "x": 0,
+                  "y": 26
+                },
+                "id": 66,
+                "panels": [],
+                "title": "Kong",
+                "type": "row"
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PAEE58C5BFB49D459"
+                },
+                "decimals": 0,
+                "fieldConfig": {
+                  "defaults": {
+                    "unit": "short"
+                  },
+                  "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 24,
+                  "x": 0,
+                  "y": 27
+                },
+                "hiddenSeries": false,
+                "id": 62,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": true,
+                  "current": false,
+                  "max": true,
+                  "min": false,
+                  "rightSide": true,
+                  "show": true,
+                  "sort": "max",
+                  "sortDesc": true,
+                  "total": true,
+                  "values": true
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum(increase(kong_http_status{job=\"kong-logistics-main\", service=\"logistics-driver-profile-biography\"}[1m])) by (code, route)",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "{{route}} - {{code}} ",
+                    "refId": "A"
+                  },
+                  {
+                    "exemplar": true,
+                    "expr": "sum(increase(kong_http_status{job=\"kong-logistics-main\", service=\"logistics-driver-profile-biography\"}[1m])) by (code, route)",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "{{route}} - {{code}} ",
+                    "refId": "C"
+                  },
+                  {
+                    "exemplar": true,
+                    "expr": "sum(increase(kong_http_status{job=\"kong-logistics-main\", service=\"logistics-driver-profile-biography-s3\"}[1m])) by (code, route)",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "{{route}} - {{code}} ",
+                    "refId": "B"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Kong GTW Throughput",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:1850",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:1851",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PAEE58C5BFB49D459"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "unit": "ms"
+                  },
+                  "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 24,
+                  "x": 0,
+                  "y": 35
+                },
+                "hiddenSeries": false,
+                "id": 64,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": true,
+                  "current": false,
+                  "max": true,
+                  "min": true,
+                  "rightSide": true,
+                  "show": true,
+                  "total": false,
+                  "values": true
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum by (route) (increase(kong_latency_sum{job=\"kong-logistics-main\", service=\"logistics-driver-profile-biography\"}[1m])) / sum by (route) (increase(kong_latency_count{job=\"kong-logistics-main\", service=\"logistics-driver-profile-biography\"}[1m]))",
+                    "interval": "",
+                    "legendFormat": "{{route}} ",
+                    "refId": "A"
+                  },
+                  {
+                    "exemplar": true,
+                    "expr": "sum by (route) (increase(kong_latency_sum{job=\"kong-logistics-main\", service=\"logistics-driver-profile-biography\"}[1m])) / sum by (route) (increase(kong_latency_count{job=\"kong-logistics-main\", service=\"logistics-driver-profile-biography\"}[1m]))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "{{route}}",
+                    "refId": "B"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Kong GTW response time",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:1930",
+                    "format": "ms",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:1931",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "collapsed": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "gridPos": {
+                  "h": 1,
+                  "w": 24,
+                  "x": 0,
+                  "y": 43
+                },
+                "id": 52,
+                "panels": [],
+                "title": "Integration",
+                "type": "row"
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "decimals": 0,
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 10,
+                  "w": 12,
+                  "x": 0,
+                  "y": 44
+                },
+                "hiddenSeries": false,
+                "id": 54,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": true,
+                  "current": false,
+                  "max": true,
+                  "min": false,
+                  "rightSide": false,
+                  "show": true,
+                  "total": false,
+                  "values": true
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "datasource": {
+                      "type": "prometheus",
+                      "uid": "P629A11DEA3B46B43"
+                    },
+                    "exemplar": true,
+                    "expr": "sum by (method, host) (increase(feign_Client_seconds_count{application=\"logistics-driver-profile-biography\", container=\"logistics-driver-profile-biography\"}[1m]))",
+                    "interval": "",
+                    "legendFormat": "{{method}} - {{host}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Integrations requests",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:82",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:83",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "unit": "ms"
+                  },
+                  "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 10,
+                  "w": 12,
+                  "x": 12,
+                  "y": 44
+                },
+                "hiddenSeries": false,
+                "id": 56,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": true,
+                  "current": false,
+                  "max": true,
+                  "min": true,
+                  "show": true,
+                  "total": false,
+                  "values": true
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "datasource": {
+                      "type": "prometheus",
+                      "uid": "P629A11DEA3B46B43"
+                    },
+                    "exemplar": true,
+                    "expr": "sum by (method, host) (increase(feign_Client_seconds_sum{application=\"logistics-driver-profile-biography\", container=\"logistics-driver-profile-biography\"}[1m])) / sum by (method, host) (increase(feign_Client_seconds_count{application=\"logistics-driver-profile-biography\", container=\"logistics-driver-profile-biography\"}[1m])) * 1000",
+                    "interval": "",
+                    "legendFormat": "{{method}} - {{host}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Integration response time",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:162",
+                    "format": "ms",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:163",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 10,
+                  "w": 12,
+                  "x": 0,
+                  "y": 54
+                },
+                "hiddenSeries": false,
+                "id": 58,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": true,
+                  "current": false,
+                  "max": true,
+                  "min": false,
+                  "show": true,
+                  "sort": "max",
+                  "sortDesc": true,
+                  "total": false,
+                  "values": true
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "datasource": {
+                      "type": "prometheus",
+                      "uid": "P629A11DEA3B46B43"
+                    },
+                    "exemplar": true,
+                    "expr": "sum by (method, http_status, exception) (increase(feign_Feign_http_error_total {http_status=~\"4.*|5.*\"}[1m]))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "{{method}} - {{http_status}}",
+                    "refId": "B"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Integration Errors",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:1542",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:1543",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "collapsed": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "gridPos": {
+                  "h": 1,
+                  "w": 24,
+                  "x": 0,
+                  "y": 64
+                },
+                "id": 50,
+                "panels": [],
+                "title": "Container",
+                "type": "row"
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "unit": "rpm"
+                  },
+                  "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 9,
+                  "w": 24,
+                  "x": 0,
+                  "y": 65
+                },
+                "hiddenSeries": false,
+                "id": 46,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": true,
+                  "current": true,
+                  "max": true,
+                  "min": false,
+                  "rightSide": true,
+                  "show": true,
+                  "sort": "max",
+                  "sortDesc": true,
+                  "total": false,
+                  "values": true
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum by (method, uri, status) (increase(http_server_requests_seconds_count{application=\"logistics-driver-profile-biography\", container=\"logistics-driver-profile-biography\"}[1m]))",
+                    "interval": "",
+                    "legendFormat": "{{method}}-{{uri}} - {{status}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Throughput RPM",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:466",
+                    "format": "rpm",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:467",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "unit": "ms"
+                  },
+                  "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 10,
+                  "w": 24,
+                  "x": 0,
+                  "y": 74
+                },
+                "hiddenSeries": false,
+                "id": 48,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": true,
+                  "current": false,
+                  "max": true,
+                  "min": true,
+                  "rightSide": true,
+                  "show": true,
+                  "sort": "max",
+                  "sortDesc": true,
+                  "total": false,
+                  "values": true
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum by (uri, method, status) (increase(http_server_requests_seconds_sum{application=\"logistics-driver-profile-biography\", container=\"logistics-driver-profile-biography\"}[1m])) / sum by (uri, method, status) (increase(http_server_requests_seconds_count{application=\"logistics-driver-profile-biography\", container=\"logistics-driver-profile-biography\"}[1m])) * 1000",
+                    "interval": "",
+                    "legendFormat": "{{method}} - {{uri}}  - status {{status}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Response time",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:386",
+                    "format": "ms",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:387",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "decimals": 0,
+                "description": "",
+                "fieldConfig": {
+                  "defaults": {
+                    "unit": "short"
+                  },
+                  "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 10,
+                  "w": 12,
+                  "x": 0,
+                  "y": 84
+                },
+                "hiddenSeries": false,
+                "id": 60,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": true,
+                  "current": false,
+                  "max": true,
+                  "min": false,
+                  "show": true,
+                  "sort": "max",
+                  "sortDesc": true,
+                  "total": true,
+                  "values": true
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum by (uri, status, exception) (increase(http_server_requests_seconds_count {status=~\"4.*|5.*\"}[1m]))",
+                    "interval": "",
+                    "legendFormat": "{{uri}} - {{status}} - {{exception}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Request Error",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:1622",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:1623",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "unit": "short"
+                  },
+                  "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 10,
+                  "w": 12,
+                  "x": 12,
+                  "y": 84
+                },
+                "hiddenSeries": false,
+                "id": 68,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": true,
+                  "current": false,
+                  "max": true,
+                  "min": false,
+                  "rightSide": false,
+                  "show": true,
+                  "sort": "max",
+                  "sortDesc": true,
+                  "total": true,
+                  "values": true
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum by (error_type) (increase(integrations_errors_metrics_total{application=\"logistics-driver-profile-biography\", container=\"logistics-driver-profile-biography\"}[1m]))",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "{{error_type}}",
+                    "refId": "I"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Integration Error",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:246",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:247",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "collapsed": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "gridPos": {
+                  "h": 1,
+                  "w": 24,
+                  "x": 0,
+                  "y": 94
+                },
+                "id": 15,
+                "panels": [],
+                "title": "JVM",
+                "type": "row"
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "unit": "short"
+                  },
+                  "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 0,
+                  "y": 95
+                },
+                "hiddenSeries": false,
+                "id": 17,
+                "legend": {
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "jvm_threads_peak_threads{container=\"logistics-driver-profile-biography\"}",
+                    "interval": "",
+                    "legendFormat": "{{pod}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "JVM Thread Peak (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:498",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:499",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "description": "The current number of live daemon threads",
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 12,
+                  "y": 95
+                },
+                "hiddenSeries": false,
+                "id": 26,
+                "legend": {
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "jvm_threads_daemon_threads{container=\"logistics-driver-profile-biography\"}",
+                    "interval": "",
+                    "legendFormat": "{{pod}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "JVM daemon threads (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:1320",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:1321",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "description": "The current number of live threads including both daemon and non-daemon threads",
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 0,
+                  "y": 103
+                },
+                "hiddenSeries": false,
+                "id": 23,
+                "legend": {
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "jvm_threads_live_threads{container=\"logistics-driver-profile-biography\"}",
+                    "interval": "",
+                    "legendFormat": "{{pod}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "JVM live threads (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:1396",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:1397",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "description": "The current number of threads having some state",
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 12,
+                  "y": 103
+                },
+                "hiddenSeries": false,
+                "id": 20,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "rightSide": true,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum(jvm_threads_states_threads{container=\"logistics-driver-profile-biography\"}) by (state)",
+                    "interval": "",
+                    "legendFormat": "{{state}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "JVM thread State (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:650",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:651",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "description": "Time spent in GC pause",
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 0,
+                  "y": 111
+                },
+                "hiddenSeries": false,
+                "id": 29,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "rightSide": true,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum by (action, cause) ( rate(jvm_gc_pause_seconds_max{container=\"logistics-driver-profile-biography\"}[1m]) )",
+                    "hide": false,
+                    "interval": "",
+                    "intervalFactor": 1,
+                    "legendFormat": "{{action}} {{cause}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "JVM Garbage Collector (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:1548",
+                    "format": "s",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:1549",
+                    "format": "s",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "description": "The number of classes that are currently loaded in the Java virtual machine",
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 12,
+                  "y": 111
+                },
+                "hiddenSeries": false,
+                "id": 32,
+                "legend": {
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "jvm_classes_loaded_classes{container=\"logistics-driver-profile-biography\"}",
+                    "interval": "",
+                    "legendFormat": "{{pod}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Classes loaded (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:1626",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:1627",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "description": "Memory used: The amount of used memory\n\nCommitted: The amount of memory in bytes that is committed for the Java virtual machine to use\n\nMax: The maximum amount of memory in bytes that can be used for memory management",
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 0,
+                  "y": 119
+                },
+                "hiddenSeries": false,
+                "id": 44,
+                "legend": {
+                  "alignAsTable": true,
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "rightSide": true,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum(jvm_memory_used_bytes{area=\"heap\", container=\"logistics-driver-profile-biography\" }) by (id)",
+                    "interval": "",
+                    "legendFormat": "Memory Used {{id}}",
+                    "refId": "A"
+                  },
+                  {
+                    "exemplar": true,
+                    "expr": "sum(jvm_memory_committed_bytes{area=\"heap\", container=\"logistics-driver-profile-biography\"}) by (id)",
+                    "interval": "",
+                    "legendFormat": "Committed {{id}}",
+                    "refId": "B"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "JVM Memory (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:1702",
+                    "format": "decbytes",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:1703",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "description": "The \\\"recent cpu usage\\\" for the Java Virtual Machine process\"",
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 12,
+                  "y": 119
+                },
+                "hiddenSeries": false,
+                "id": 38,
+                "legend": {
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "process_cpu_usage{container=\"logistics-driver-profile-biography\"}",
+                    "interval": "",
+                    "legendFormat": "Usage {{pod}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "CPU Usage for the JVM (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:776",
+                    "format": "percent",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:777",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "description": "The \"recent cpu usage\" for the whole system",
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 0,
+                  "y": 127
+                },
+                "hiddenSeries": false,
+                "id": 35,
+                "legend": {
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum (system_cpu_usage{container=\"logistics-driver-profile-biography\"}) by (pod)",
+                    "interval": "",
+                    "legendFormat": "{{pod}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "CPU Usage (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:944",
+                    "format": "percent",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:945",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "P629A11DEA3B46B43"
+                },
+                "description": "The number of processors available to the Java virtual machine",
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 12,
+                  "y": 127
+                },
+                "hiddenSeries": false,
+                "id": 41,
+                "legend": {
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "system_cpu_count{container=\"logistics-driver-profile-biography\"}",
+                    "interval": "",
+                    "legendFormat": "Usage {{pod}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "CPU Count (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:1020",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:1021",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "collapsed": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "gridPos": {
+                  "h": 1,
+                  "w": 24,
+                  "x": 0,
+                  "y": 135
+                },
+                "id": 2,
+                "panels": [],
+                "title": "Kubernetes",
+                "type": "row"
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "unit": "cpu"
+                  },
+                  "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 0,
+                  "y": 136
+                },
+                "hiddenSeries": false,
+                "id": 4,
+                "legend": {
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sum(node_namespace_pod_container:container_cpu_usage_seconds_total:sum_rate{namespace=\"logistics-driver-profile-biography\", container=\"logistics-driver-profile-biography\"}) by (pod) * 100",
+                    "interval": "",
+                    "legendFormat": "{{pod}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "CPU Usage (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:868",
+                    "format": "cpu",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:869",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "unit": "gbytes"
+                  },
+                  "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 12,
+                  "y": 136
+                },
+                "hiddenSeries": false,
+                "id": 12,
+                "legend": {
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": " sum(container_memory_usage_bytes{namespace=\"logistics-driver-profile-biography\", container_name=\"logistics-driver-profile-biography\"}) by (pod) / 1000 / 1000 / 1000",
+                    "interval": "",
+                    "legendFormat": "{{pod}} - {{container_name}}",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Memory Usage (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:1244",
+                    "format": "gbytes",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:1245",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "unit": "decmbytes"
+                  },
+                  "overrides": []
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 12,
+                  "x": 0,
+                  "y": 144
+                },
+                "hiddenSeries": false,
+                "id": 10,
+                "legend": {
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "sort_desc(sum by (container) (rate(container_network_receive_bytes_total{job=\"kubelet\", namespace=\"logistics-driver-profile-biography\", pod_name=~\"logistics-driver-profile-biography-.*\"}[5m]))) / 1048576",
+                    "interval": "",
+                    "legendFormat": "receive",
+                    "refId": "A"
+                  },
+                  {
+                    "exemplar": true,
+                    "expr": "sort_desc(sum by (container) (rate(container_network_transmit_bytes_total{job=\"kubelet\", namespace=\"logistics-driver-profile-biography\", pod_name=~\"logistics-driver-profile-biography-.*\"}[5m]))) / 1048576",
+                    "hide": false,
+                    "interval": "",
+                    "legendFormat": "transmit",
+                    "refId": "B"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "Network (API)",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "$$hashKey": "object:2224",
+                    "format": "decmbytes",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "$$hashKey": "object:2225",
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "aliasColors": {},
+                "bars": false,
+                "dashLength": 10,
+                "dashes": false,
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "fill": 1,
+                "fillGradient": 0,
+                "gridPos": {
+                  "h": 8,
+                  "w": 6,
+                  "x": 12,
+                  "y": 144
+                },
+                "hiddenSeries": false,
+                "id": 7,
+                "legend": {
+                  "avg": false,
+                  "current": false,
+                  "max": false,
+                  "min": false,
+                  "show": true,
+                  "total": false,
+                  "values": false
+                },
+                "lines": true,
+                "linewidth": 1,
+                "nullPointMode": "null",
+                "options": {
+                  "alertThreshold": true
+                },
+                "percentage": false,
+                "pluginVersion": "8.5.9",
+                "pointradius": 2,
+                "points": false,
+                "renderer": "flot",
+                "seriesOverrides": [],
+                "spaceLength": 10,
+                "stack": false,
+                "steppedLine": false,
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "count(kube_pod_info{namespace=\"logistics-driver-profile-biography\", pod=~\"logistics-driver-profile-biography.*\"}) ",
+                    "interval": "",
+                    "legendFormat": "pods",
+                    "refId": "A"
+                  }
+                ],
+                "thresholds": [],
+                "timeRegions": [],
+                "title": "PODs Count",
+                "tooltip": {
+                  "shared": true,
+                  "sort": 0,
+                  "value_type": "individual"
+                },
+                "type": "graph",
+                "xaxis": {
+                  "mode": "time",
+                  "show": true,
+                  "values": []
+                },
+                "yaxes": [
+                  {
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  },
+                  {
+                    "format": "short",
+                    "logBase": 1,
+                    "show": true
+                  }
+                ],
+                "yaxis": {
+                  "align": false
+                }
+              },
+              {
+                "datasource": {
+                  "type": "prometheus",
+                  "uid": "PBFA97CFB590B2093"
+                },
+                "fieldConfig": {
+                  "defaults": {
+                    "color": {
+                      "mode": "thresholds"
+                    },
+                    "mappings": [],
+                    "noValue": "0",
+                    "thresholds": {
+                      "mode": "absolute",
+                      "steps": [
+                        {
+                          "color": "green"
+                        },
+                        {
+                          "color": "red",
+                          "value": 80
+                        }
+                      ]
+                    }
+                  },
+                  "overrides": []
+                },
+                "gridPos": {
+                  "h": 8,
+                  "w": 6,
+                  "x": 0,
+                  "y": 152
+                },
+                "id": 8,
+                "options": {
+                  "colorMode": "value",
+                  "graphMode": "area",
+                  "justifyMode": "auto",
+                  "orientation": "auto",
+                  "reduceOptions": {
+                    "calcs": [
+                      "lastNotNull"
+                    ],
+                    "fields": "",
+                    "values": false
+                  },
+                  "text": {},
+                  "textMode": "auto"
+                },
+                "pluginVersion": "8.5.9",
+                "targets": [
+                  {
+                    "exemplar": true,
+                    "expr": "(kube_pod_container_status_restarts_total{job=\"kube-state-metrics\", namespace=\"logistics-driver-profile-biography\", container=\"logistics-driver-profile-biography\", pod=~\"$pod\"}) > 0 ",
+                    "interval": "0",
+                    "legendFormat": "API",
+                    "refId": "A"
+                  }
+                ],
+                "title": "PODs Restarts",
+                "type": "stat"
+              }
+            ],
+            "refresh": "",
+            "schemaVersion": 36,
+            "style": "dark",
+            "tags": [],
+            "templating": {
+              "list": []
+            },
+            "time": {
+              "from": "now-5m",
+              "to": "now"
+            },
+            "timepicker": {},
+            "timezone": "",
+            "title": "logistics-driver-profile-biography-dashboard",
+            "uid": "9951e602a7828d6a64245bdf0fe5e7f70ba2fe5f",
+            "version": 4,
+            "weekStart": ""
+          }
